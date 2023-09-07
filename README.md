@@ -18,7 +18,7 @@ Esta es una aplicación web que permite calcular la composición corporal de una
 2. Asegúrate de tener Node.js instalado.
 3. Abre una terminal en el directorio raíz del proyecto.
 4. Ejecuta el comando `npm install` para instalar las dependencias.
-5. Ejecuta el comando `npm start` para iniciar la aplicación.
+5. Ejecuta el comando `npm run dev` para iniciar la aplicación.
 También es necesario instalar el plugin de chartjs
 
 ## Versiones
