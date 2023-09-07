@@ -1,4 +1,4 @@
-import Menu from '@/components/menu'
+import Menu from '../components/menu'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
