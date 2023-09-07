@@ -1,5 +1,66 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
+# Composición Corporal App
+
+## Descripción
+Esta es una aplicación web que permite calcular la composición corporal de una persona basada en medidas antropométricas y otros datos relevantes. Proporciona información sobre el porcentaje de grasa corporal, densidad corporal, masa ósea, masa residual y masa muscular.
+
+## Capturas de Pantalla
+![Captura de Pantalla 1](./screenshots/screenshot1.png)
+![Captura de Pantalla 2](./screenshots/screenshot2.png)
+
+## Características
+- Cálculo del porcentaje de grasa corporal.
+- Estimación de la densidad corporal.
+- Cálculo de la masa ósea, masa residual y masa muscular.
+- Interfaz de usuario amigable.
+
+## Instalación
+1. Clona este repositorio en tu máquina local.
+2. Asegúrate de tener Node.js instalado.
+3. Abre una terminal en el directorio raíz del proyecto.
+4. Ejecuta el comando `npm install` para instalar las dependencias.
+5. Ejecuta el comando `npm start` para iniciar la aplicación.
+También es necesario instalar el plugin de chartjs
+
+## Versiones
+
+Este proyecto se ha desarrollado y probado con las siguientes versiones:
+
+- Node.js: v18.14.0
+- React: v18.2.0
+- Next.js: v13.4.19
+
+## Uso
+1. Abre la aplicación en tu navegador.
+2. Ingresa los datos requeridos, como género, edad, peso, talla y medidas antropométricas.
+3. Haz clic en el botón "Calcular" para obtener los resultados.
+4. Los resultados se mostrarán en la parte derecha de la pantalla.
+
+## Contribución
+Si deseas contribuir a este proyecto, sigue estos pasos:
+1. Haz un fork del repositorio en GitHub.
+2. Clona tu fork en tu máquina local.
+3. Crea una nueva rama para tus cambios: `git checkout -b feature/nueva-caracteristica`.
+4. Realiza tus cambios y commitea: `git commit -m "Añade nueva característica"`.
+5. Sube tus cambios a tu fork en GitHub: `git push origin feature/nueva-caracteristica`.
+6. Crea un pull request en el repositorio original.
+
+
+
+# Acerca de
+
+## Descripción
+El objetivo de la aplicación es informar el estado físico actual.
+
+## Autor
+- Nombre: Jesus Jeovany Bonilla Martinez
+- Correo Electrónico: jeovany17.23@gmail.com
+
+## Licencia
+Código Abierto
+
 ## Getting Started
 
 First, run the development server:
