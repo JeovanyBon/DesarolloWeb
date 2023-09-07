@@ -6,9 +6,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Descripción
 Esta es una aplicación web que permite calcular la composición corporal de una persona basada en medidas antropométricas y otros datos relevantes. Proporciona información sobre el porcentaje de grasa corporal, densidad corporal, masa ósea, masa residual y masa muscular.
 
-## Capturas de Pantalla
-![Captura de Pantalla 1](./screenshots/screenshot1.png)
-![Captura de Pantalla 2](./screenshots/screenshot2.png)
 
 ## Características
 - Cálculo del porcentaje de grasa corporal.
