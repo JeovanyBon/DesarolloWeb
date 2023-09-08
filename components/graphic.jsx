@@ -79,7 +79,7 @@ const CompositionCorpChart = ({
   return (
     <div className="bg-customColor">
       {/* Agrega el elemento canvas para la gráfica */}
-      <canvas ref={chartRef} width={'400'} height={'300'}></canvas>
+      <canvas ref={chartRef} width={'400'} height={'200'}></canvas>
     </div>
   );
 };

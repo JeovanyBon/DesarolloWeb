@@ -1,9 +1,10 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Roboto_Mono } from 'next/font/google';
-import CompositionCorpForm from '../../components/form';
-import CompositionCorpChart from '../../components/graphic';
-import CompositionCorpResult from '../../components/result';
+import CompositionCorpForm from '../../components/Form';
+import CompositionCorpChart from '../../components/Graphic';
+import CompositionCorpResult from '../../components/Result';
+import TablaResultados from '@/components/Table';
 
 // Declaración de fuentes y estilos
 const roboto_Mono = Roboto_Mono({ subsets: ['latin'], weight: ['400'] });
@@ -33,6 +34,23 @@ const ComposicionCorporalForm = () => {
 
   // Función para calcular la composición corporal
   const calcularResultado = () => {
+
+    if (
+      !genero ||
+      !edad ||
+      !peso ||
+      !talla ||
+      !tricep ||
+      !bicep ||
+      !subescapular ||
+      !supraileaco ||
+      !femur ||
+      !biestiloideo
+    ) {
+      // Mostrar un mensaje de error y no realizar el cálculo
+      alert('Por favor, complete todos los campos obligatorios.');
+      return;
+    }
     const sumaPliegues =
       parseFloat(tricep) +
       parseFloat(bicep) +
@@ -41,11 +59,11 @@ const ComposicionCorporalForm = () => {
     let dc = 0;
 
     // Cálculo de densidad corporal (dc) en función del género
-    if (genero === 'H') {
+    if (genero === 'Hombre') {
       dc = 1.1765 - 0.0744 * Math.log10(sumaPliegues);
       console.log(dc);
       setDensidad(dc);
-    } else if (genero === 'M') {
+    } else if (genero === 'Mujer') {
       dc = 1.1567 - 0.0717 * Math.log10(sumaPliegues);
       setDensidad(dc);
     }
@@ -65,7 +83,7 @@ const ComposicionCorporalForm = () => {
     setMasaOseaP(((masaOseaCalculada / peso) * 100).toFixed(2));
 
     const masaResidualCalculada =
-      genero === 'H' ? parseFloat(peso) * 0.24 : parseFloat(peso) * 0.21;
+      genero === 'Hombre' ? parseFloat(peso) * 0.24 : parseFloat(peso) * 0.21;
     setMasaResidual(masaResidualCalculada.toFixed(2));
     setMasaResidualP(((masaResidualCalculada / peso) * 100).toFixed(2));
     setMasaMuscularP(
@@ -88,13 +106,15 @@ const ComposicionCorporalForm = () => {
 
   // Renderizado del componente
   return (
-    <div className="text-center bg-secondary h-screen w-full">
-        <h1 className={`text-customColor text-4xl mt-0 text-center  ${roboto_Mono.className}`}
-        style={{paddingBottom: '25px'}}>
-            <strong>Composición Corporal</strong>
+    <div className="text-center bg-secondary h-screen w-full overflow-hidden">
+      <div className='max-h-screen overflow-y-scroll'>
+        <h1 className={`text-customColor text-4xl mt-0 text-center ${roboto_Mono.className}`} style={{ paddingBottom: '25px' }}>
+          <strong>Composición Corporal</strong>
         </h1>
-        <div className="flex justify-start ">
-            <CompositionCorpForm
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className='md:w-1/2 md:px-4 mb-4 md:mb-0'>
+            <div className="py-1">
+              <CompositionCorpForm
                 genero={genero}
                 edad={edad}
                 peso={peso}
@@ -116,32 +136,51 @@ const ComposicionCorporalForm = () => {
                 setFemur={setFemur}
                 setBiestiloideo={setBiestiloideo}
                 calcularResultado={calcularResultado}
-            />
-            <div className="flex flex-col justify-center items-center  px-20">
-                <CompositionCorpResult
-                    resultado={resultado}
-                    densidad={densidad}
-                    masaOsea={masaOsea}
-                    masaResidual={masaResidual}
-                    masaOseaP={masaOseaP}
-                    masaResidualP={masaResidualP}
-                    masaGrasaK={masaGrasaK}
-                    masaMuscularP={masaMuscularP}
-                    masaMuscularK={masaMuscularK}
-                />
-                <CompositionCorpChart
-                    resultado={resultado}
-                    masaOseaP={masaOseaP}
-                    masaResidualP={masaResidualP}
-                    masaMuscularP={masaMuscularP}
-                />
-                <div className="py-1">
-                </div>
-                <button className="bg-thirty text-customColor py-2 px-4 rounded " onClick={calcularResultado}>
-                    Calcular
-                </button>
+              />
             </div>
+            <div className="mt-2 mb-2">
+              <button className="bg-thirty justify-center items-start text-customColor py-2 px-4 rounded" onClick={calcularResultado}>
+                Calcular
+              </button>
+            </div>
+          </div>
+          <div className='md:w-1/2 md:px-4 mb-4 md:mb-0'>
+            <TablaResultados
+              resultado={resultado}
+              masaGrasaK={masaGrasaK}
+              masaOseaP={masaOseaP}
+              masaOsea={masaOsea}
+              masaResidualP={masaResidualP}
+              masaResidual={masaResidual}
+              masaMuscularP={masaMuscularP}
+              masaMuscularK={masaMuscularK}
+            />
+          </div>
         </div>
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className='md:w-1/2 md:px-4 mb-4 md:mb-0'>
+            <CompositionCorpResult
+              resultado={resultado}
+              densidad={densidad}
+              masaOsea={masaOsea}
+              masaResidual={masaResidual}
+              masaOseaP={masaOseaP}
+              masaResidualP={masaResidualP}
+              masaGrasaK={masaGrasaK}
+              masaMuscularP={masaMuscularP}
+              masaMuscularK={masaMuscularK}
+            />
+          </div>
+          <div className='md:w-1/2 md:px-4 mb-4 md:mb-0'>
+            <CompositionCorpChart
+              resultado={resultado}
+              masaOseaP={masaOseaP}
+              masaResidualP={masaResidualP}
+              masaMuscularP={masaMuscularP}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
